@@ -1,0 +1,31 @@
+.search-bar {
+  margin-top: 50px;
+}
+.searchBtn {
+  width: 168px;
+  height: 60px;
+  background: #71ba58;
+  border-radius: 0px 4px 4px 0px;
+  color: #fff;
+}
+.searchInput {
+  width: 570px;
+  height: 60px;
+  background: #f1f1f1;
+  border-radius: 4px;
+  border: none;
+}
+.searchInput::placeholder {
+  padding-left: 30px;
+}
+/* .searchIcon {
+  position: absolute;
+  left: 280px;
+} */
+
+@media only screen and (max-width: 992px) {
+  .searchInput,
+  .searchBtn {
+    width: 100%;
+  }
+}

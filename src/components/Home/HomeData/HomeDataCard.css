@@ -1,0 +1,31 @@
+.dataCard .card {
+  height: 550px;
+  background: #ffffff;
+  border: none;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  margin-top: 15px;
+}
+.dataCard .card-title {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+  color: #000000;
+}
+.dataCard h6 {
+  font-style: normal;
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 42px;
+  color: #71ba58;
+}
+.buyBtn {
+  width: 140px;
+  height: 50px;
+  color: white;
+  background: #71ba58;
+}
+.pricePart {
+  padding: 17px;
+}

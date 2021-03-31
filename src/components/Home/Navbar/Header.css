@@ -1,0 +1,13 @@
+.logBtn {
+  width: 90px;
+  height: 43px;
+  padding-left: 20px !important;
+  background: #71ba58;
+  border-radius: 0px 4px 4px 0px;
+}
+.nav-link {
+  margin-left: 25px;
+}
+.navbar-brand img {
+  width: 199px;
+}
