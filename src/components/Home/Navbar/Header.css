@@ -8,9 +8,10 @@
 .nav-link {
   margin-left: 25px;
 }
-.navbar-brand img {
-  width: 199px;
-}
 .hideImg {
   width: 35px;
+}
+.navbar-brand h4 {
+  font-size: 28px;
+  font-weight: bold;
 }
