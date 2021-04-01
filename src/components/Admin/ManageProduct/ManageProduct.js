@@ -3,17 +3,6 @@ import SideBar from '../SideBar/SideBar';
 import Data from '../../Home/Data/Data';
 
 const ManageProduct = () => {
-
-const handleAddProduct = () => {
-  fetch('http://localhost:5000/addProduct', {
-  method: 'POST',
-  headers: {
-    'Content-type': 'application/json; charset=UTF-8',
-  },
-  body: JSON.stringify(Data),
- 
-})
-}
     return (
         <div>
            <div className="container-fluid">
@@ -23,7 +12,6 @@ const handleAddProduct = () => {
                    </div>
                    <div className="col-md-9">
                        <h4 className="mt-4">Manage Product</h4>
-                       <button onClick={handleAddProduct}>Add Product</button>
                        <table className="table mt-5">
   <thead>
     <tr>
