@@ -8,12 +8,20 @@ import {
 import LogIn from './components/LogIn/LogIn';
 import SignIn from './components/SignIn/SignIn';
 import CheckOut from './components/CheckOut/CheckOut';
+import AddProduct from './components/Admin/AddProduct/AddProduct';
+import ManageProduct from './components/Admin/ManageProduct/ManageProduct';
 function App() {
   return (
     <div className="App">
       <Router>
         <Switch>
-        <Route path="/checkOut">
+        <Route path="/manageProduct">
+            <ManageProduct/>
+          </Route>
+        <Route path="/addProduct">
+            <AddProduct/>
+          </Route>
+        <Route path="/checkOut/:id">
             <CheckOut/>
           </Route>
         <Route path="/signIn">

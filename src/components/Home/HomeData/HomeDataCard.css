@@ -5,6 +5,7 @@
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.05);
   border-radius: 20px;
   margin-top: 15px;
+  cursor: pointer;
 }
 .dataCard .card-title {
   font-style: normal;
