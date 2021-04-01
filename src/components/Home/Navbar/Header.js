@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../../App';
 import './Header.css'
 const Header = () => {
+  const [loggedInUser,setLoggedInUser] = useContext(UserContext)
     return (
         <div >
             <nav className="navbar navbar-expand-lg navbar-light container">
@@ -17,17 +19,25 @@ const Header = () => {
         <Link className="nav-link" to="#">Home <span className="sr-only">(current)</span></Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link text-dark" to="#">Orders</Link>
+        <Link className="nav-link text-dark" to="/">Orders</Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link text-dark" to="#">Admin</Link>
+        <Link className="nav-link text-dark" to="/addProduct">Admin</Link>
       </li>
       <li className="nav-item">
-        <a className="nav-link text-dark" to="#">Deals</a>
+        {loggedInUser.email?<a className="nav-link text-dark" to="#">{loggedInUser.displayName}</a>:<a className="nav-link text-dark" to="#">Deals</a>}
       </li>
       <li className="nav-item">
-        <Link style={{color:'white'}} className="nav-link logBtn" to="/login">Login</Link>
+      {loggedInUser.email?  <Link onClick={()=>setLoggedInUser({})} style={{color:'white'}} className="nav-link logBtn" to="">LogOut</Link>  :<Link style={{color:'white'}} className="nav-link logBtn" to="/login">Login</Link>
+      }
       </li>
+     {loggedInUser.email &&
+        <li className="nav-item">
+        <a className="nav-link text-dark" to="#">
+          <img className="hideImg rounded-circle" src={loggedInUser.photoURL} alt=""/>
+        </a>
+      </li>
+     }
     </ul>
   </div>
 </nav>

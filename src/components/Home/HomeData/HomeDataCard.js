@@ -5,7 +5,7 @@ const HomeDataCard = ({data}) => {
     const {img,id,name,price} = data
     let history = useHistory();
     function handleClick(id) {
-      history.push(`/${id}`);
+      history.push(`/checkOut/${id}`);
     }
     return (
         <div className="dataCard col-md-4">

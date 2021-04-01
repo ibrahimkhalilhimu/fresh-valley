@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Header from '../Home/Navbar/Header';
 import './SignIn.css'
 import { useForm } from "react-hook-form";
 import { AiFillCaretRight } from "react-icons/ai";
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
+import { createUserWithEmailAndPassword, handleSignOut } from '../Firebase/LoggedInManager';
+import { UserContext } from '../../App';
 const caretRight = <AiFillCaretRight/>
 
 const SignIn = () => {
@@ -11,8 +13,34 @@ const SignIn = () => {
     const togglePasswordVisiblity = () => {
       setPasswordShown(passwordShown ? false : true);
     };
+    const [loggedInUser,setLoggedInUser] = useContext(UserContext)
+    let history = useHistory();
+    let location = useLocation();
+    let { from } = location.state || { from: { pathname: "/" } };
     const { register, handleSubmit, watch, errors } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+      createUserWithEmailAndPassword(data.name, data.email, data.password)
+      .then(res=>{
+       setLoggedInUser(res)
+      alert('Successfully registered')
+       history.replace(from)
+      })
+    };
+
+    const signOut =()=>{
+      handleSignOut()
+      .then(res =>{
+        handleResponse(res,false)
+      })
+    }
+    
+    const handleResponse =(res,redirect)=>{
+      setLoggedInUser(res)
+    if(redirect){
+       history.replace(from);
+    }
+    
+    }
     return (
         <div className="SignInPage">
             <Header/>

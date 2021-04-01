@@ -10,20 +10,28 @@ import SignIn from './components/SignIn/SignIn';
 import CheckOut from './components/CheckOut/CheckOut';
 import AddProduct from './components/Admin/AddProduct/AddProduct';
 import ManageProduct from './components/Admin/ManageProduct/ManageProduct';
+import { createContext, useState } from 'react';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+
+export const UserContext = createContext()
+
 function App() {
+
+  const [loggedInUser,setLoggedInUser] = useState({success:false})
   return (
     <div className="App">
+      <UserContext.Provider value={[loggedInUser,setLoggedInUser]} >
       <Router>
         <Switch>
-        <Route path="/manageProduct">
+        <PrivateRoute path="/manageProduct">
             <ManageProduct/>
-          </Route>
-        <Route path="/addProduct">
+          </PrivateRoute>
+        <PrivateRoute path="/addProduct">
             <AddProduct/>
-          </Route>
-        <Route path="/checkOut/:id">
+          </PrivateRoute>
+        <PrivateRoute path="/checkOut/:id">
             <CheckOut/>
-          </Route>
+          </PrivateRoute>
         <Route path="/signIn">
             <SignIn/>
           </Route>
@@ -36,6 +44,7 @@ function App() {
           
         </Switch>
       </Router>
+      </UserContext.Provider>
     </div>
   );
 }
