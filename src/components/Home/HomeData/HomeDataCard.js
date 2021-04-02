@@ -2,7 +2,8 @@ import React from 'react';
 import { useHistory } from 'react-router';
 import './HomeDataCard.css'
 const HomeDataCard = ({data}) => {
-    const {img,id,name,price} = data
+    const {img,_id,id,name,price} = data
+    console.log(_id);
     let history = useHistory();
     function handleClick(id) {
       history.push(`/checkOut/${id}`);
@@ -16,7 +17,7 @@ const HomeDataCard = ({data}) => {
     </div>
     <div className="pricePart d-flex justify-content-between">
         <h6>${price}</h6>
-        <button onClick={() =>handleClick(id)} className="btn buyBtn">Buy Now</button>
+        <button onClick={() =>handleClick(_id)} className="btn buyBtn">Buy Now</button>
     </div>
   </div>
         

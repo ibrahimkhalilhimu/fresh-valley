@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import Data from '../Home/Data/Data';
 import Header from '../Home/Navbar/Header';
 
 const CheckOut = () => {
   let { id } = useParams();
-  const homeData = Data.find(data => data.id == id);
-  console.log(homeData);
+  const [checkOutProduct,setCheckOutProduct]=useState({});
+  useEffect(() => {
+    fetch(`http://localhost:5000/product/${id}`)
+    .then(res => res.json())
+    .then(data => {
+      setCheckOutProduct(data)
+    })
+  },[])
+  // const homeData = Data.find(data => data.id === id);
+  // console.log(homeData);
     return (
         <div className="check-out">
             <Header/>
@@ -23,9 +31,9 @@ const CheckOut = () => {
   <tbody>
     <tr>
      
-      <td>{homeData.name}</td>
+      <td>{checkOutProduct.name}</td>
       <td>1</td>
-      <td>$ {homeData.price}</td>
+      <td>$ {checkOutProduct.price}</td>
     </tr>
   </tbody>
 </table>
