@@ -8,7 +8,7 @@ const SearchBar = () => {
       <form className="form-inline d-flex justify-content-center">
     <input className="searchInput" 
     type="search"
-     placeholder="Search Valley" 
+     placeholder="Search Product" 
      aria-label="Search"/>
      {/* <FiSearch className="searchIcon"/> */}
     <button className="btn searchBtn" type="submit">Search</button>

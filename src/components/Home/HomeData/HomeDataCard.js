@@ -3,7 +3,6 @@ import { useHistory } from 'react-router';
 import './HomeDataCard.css'
 const HomeDataCard = ({data}) => {
     const {img,_id,id,name,price} = data
-    console.log(_id);
     let history = useHistory();
     function handleClick(id) {
       history.push(`/checkOut/${id}`);

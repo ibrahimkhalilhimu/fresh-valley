@@ -1,7 +1,6 @@
 import React from 'react';
 import SideBar from '../SideBar/SideBar';
-import Data from '../../Home/Data/Data';
-
+import { AiOutlineDelete } from "react-icons/ai";
 const ManageProduct = () => {
     return (
         <div>
@@ -12,33 +11,26 @@ const ManageProduct = () => {
                    </div>
                    <div className="col-md-9">
                        <h4 className="mt-4">Manage Product</h4>
-                       <table className="table mt-5">
+                       <table  className="table mt-5">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Product Name and Wight </th>
+      <th scope="col">Price</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row">1</th>
       <td>Mark</td>
       <td>Otto</td>
-      <td>@mdo</td>
+      <td>
+        <AiOutlineDelete color="red" size="25px"/>
+      </td>
     </tr>
     <tr>
-      <th scope="row">2</th>
       <td>Jacob</td>
       <td>Thornton</td>
       <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
     </tr>
   </tbody>
 </table>

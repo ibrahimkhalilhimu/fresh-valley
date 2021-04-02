@@ -12,6 +12,7 @@ import AddProduct from './components/Admin/AddProduct/AddProduct';
 import ManageProduct from './components/Admin/ManageProduct/ManageProduct';
 import { createContext, useState } from 'react';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import Orders from './components/Orders/Orders';
 
 export const UserContext = createContext()
 
@@ -23,15 +24,18 @@ function App() {
       <UserContext.Provider value={[loggedInUser,setLoggedInUser]} >
       <Router>
         <Switch>
+        <Route path="/orders">
+            <Orders/>
+          </Route>
         <PrivateRoute path="/manageProduct">
             <ManageProduct/>
           </PrivateRoute>
         <PrivateRoute path="/addProduct">
             <AddProduct/>
           </PrivateRoute>
-        <Route path="/checkOut/:id">
+        <PrivateRoute path="/checkOut/:id">
             <CheckOut/>
-          </Route>
+          </PrivateRoute>
         <Route path="/signIn">
             <SignIn/>
           </Route>

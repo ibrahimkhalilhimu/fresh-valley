@@ -9,14 +9,13 @@ const HomeData = () => {
         .then((response) => response.json())
         .then((data) => setValley(data));
     },[])
-    console.log(valley);
     return (
         <div className="my-5">
             <div className="container">
                <div className="row">
                    
                    {
-                    valley.map(data =><HomeDataCard data={data} key={data.index}></HomeDataCard> )
+                    valley.map(data =><HomeDataCard data={data} key={data._id}></HomeDataCard> )
                 }
                   
                </div>

@@ -14,23 +14,19 @@ const AddProduct = () => {
                     <h4>Add Product</h4>
                     </div>
                   <div className="backgroundColor">
-                  <div className="addProduct-from">
+                  <div className="addProduct-from ">
                     <form >
-                    <div className="form-group pt-5">
-                        <label htmlFor="exampleInputText">Service Title</label>
-                        <input  type="text" className="form-control" name="title" placeholder="Product Name" />
+                    <div className="form-group">
+                        <label htmlFor="exampleInputText">Product Name and Wight</label>
+                        <input  type="text" className="form-control" name="title" placeholder="Product Name and Wight" />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="exampleInputText">Service Title</label>
+                        <label htmlFor="exampleInputText">Add Price</label>
                         <input  type="number" className="form-control" name="price" placeholder="Add Price" />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="exampleInputText">Service Title</label>
-                        <input  type="text" className="form-control" name="wight" placeholder="Wight" />
-                    </div>
-                    <div className="form-group">
                         <label htmlFor="exampleInputText">Upload a image</label>
-                        <input  type="file" className="form-control" id="exampleInputPassword1" placeholder="Picture" />
+                        <input  type="file" className="form-control text-success" id="exampleInputPassword1" placeholder="Picture" />
                     </div>
                     <button type="submit" className="btn btn-success">Submit</button>
                 </form>
