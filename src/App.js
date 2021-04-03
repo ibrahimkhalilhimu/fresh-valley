@@ -13,12 +13,14 @@ import ManageProduct from './components/Admin/ManageProduct/ManageProduct';
 import { createContext, useState } from 'react';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Orders from './components/Orders/Orders';
+import MakeAdmin from './components/Admin/MakeAdmin/MakeAdmin';
 
 export const UserContext = createContext()
 
 function App() {
 
   const [loggedInUser,setLoggedInUser] = useState({success:false})
+  
   return (
     <div className="App">
       <UserContext.Provider value={[loggedInUser,setLoggedInUser]} >
@@ -32,6 +34,9 @@ function App() {
           </PrivateRoute>
         <PrivateRoute path="/addProduct">
             <AddProduct/>
+          </PrivateRoute>
+          <PrivateRoute path="/makeAdmin">
+            <MakeAdmin/>
           </PrivateRoute>
         <PrivateRoute path="/checkOut/:id">
             <CheckOut/>

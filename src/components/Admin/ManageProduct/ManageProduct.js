@@ -1,7 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import SideBar from '../SideBar/SideBar';
 import { AiOutlineDelete } from "react-icons/ai";
 const ManageProduct = () => {
+
+  const [orderList,setOrderList] = useState([])
+  useEffect(() => {
+    fetch('http://localhost:5000/order')
+    .then(res =>res.json())
+    .then(data => {
+      setOrderList(data);
+    })
+  },[])
+
+const handleClickDelete= (_id)=>{
+  fetch(`http://localhost:5000/delete/${_id}`,{
+    method:'DELETE',
+})
+.then(res => res.json())
+.then(result =>{
+    console.log(result);
+    alert('delete success')
+})
+}
     return (
         <div>
            <div className="container-fluid">
@@ -20,18 +40,15 @@ const ManageProduct = () => {
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Mark</td>
-      <td>Otto</td>
+  {orderList.map(data=>
+      <tr key={data._id}>
+      <td>{data.checkOutProduct.name}</td>
+      <td>${data.checkOutProduct.price}</td>
       <td>
-        <AiOutlineDelete color="red" size="25px"/>
+        <AiOutlineDelete onClick={() =>handleClickDelete(data._id)} color="red" size="25px" cursor="pointer"/>
       </td>
     </tr>
-    <tr>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
+    )}
   </tbody>
 </table>
                    </div>

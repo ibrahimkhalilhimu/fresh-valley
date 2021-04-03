@@ -14,7 +14,7 @@
   cursor: pointer;
 }
 .manageProduct h6 {
-  margin-top: -4px;
+  margin-top: 4px;
 }
 @media only screen and (max-width: 800px) {
   .sidebar,
