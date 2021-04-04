@@ -4,7 +4,7 @@ import SideBar from '../SideBar/SideBar';
 const MakeAdmin = () => {
     const { register, handleSubmit, watch, errors } = useForm();
     const onSubmit = data => {
-        fetch('http://localhost:5000/makeAdmin',{
+        fetch('https://pure-hollows-18299.herokuapp.com/makeAdmin',{
             method:'POST',
             headers:{ 
                 'Content-Type':'application/json'

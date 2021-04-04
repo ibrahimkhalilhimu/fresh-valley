@@ -24,7 +24,6 @@ initializeLoginInFrameWorker()
 
 const googleSignIn =()=> {
   googleBtn().then((res)=> {
-    console.log(res);
     setLoggedInUser(res)
     history.replace(from)
   })

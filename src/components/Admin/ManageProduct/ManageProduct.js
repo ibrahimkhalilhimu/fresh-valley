@@ -5,7 +5,7 @@ const ManageProduct = () => {
 
   const [orderList,setOrderList] = useState([])
   useEffect(() => {
-    fetch('http://localhost:5000/order')
+    fetch('https://pure-hollows-18299.herokuapp.com/order')
     .then(res =>res.json())
     .then(data => {
       setOrderList(data);
@@ -13,7 +13,7 @@ const ManageProduct = () => {
   },[])
 
 const handleClickDelete= (_id)=>{
-  fetch(`http://localhost:5000/delete/${_id}`,{
+  fetch(`https://pure-hollows-18299.herokuapp.com/delete/${_id}`,{
     method:'DELETE',
 })
 .then(res => res.json())

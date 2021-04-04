@@ -20,15 +20,15 @@ export const UserContext = createContext()
 function App() {
 
   const [loggedInUser,setLoggedInUser] = useState({success:false})
-  
+  const [isAdmin,setIsAdmin] = useState(false)
   return (
     <div className="App">
-      <UserContext.Provider value={[loggedInUser,setLoggedInUser]} >
+      <UserContext.Provider value={[loggedInUser,setLoggedInUser,isAdmin,setIsAdmin]} >
       <Router>
-        <Switch>
-        <Route path="/orders">
+        <Switch>   
+        <PrivateRoute path="/orders">
             <Orders/>
-          </Route>
+          </PrivateRoute>
         <PrivateRoute path="/manageProduct">
             <ManageProduct/>
           </PrivateRoute>

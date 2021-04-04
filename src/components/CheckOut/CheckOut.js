@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { BsTypeH3 } from 'react-icons/bs';
 import { useParams } from 'react-router';
 import { UserContext } from '../../App';
 import Data from '../Home/Data/Data';
@@ -11,7 +12,7 @@ const [loggedInUser,setLoggedInUser] = useContext(UserContext)
   const currentDate = new Date().toLocaleDateString();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/product/${id}`)
+    fetch(`https://pure-hollows-18299.herokuapp.com/product/${id}`)
     .then(res => res.json())
     .then(data => {
       setCheckOutProduct(data)
@@ -20,7 +21,7 @@ const [loggedInUser,setLoggedInUser] = useContext(UserContext)
 
 const handleAddOrder = () => {
 const newOrder = {...loggedInUser,checkOutProduct,currentDate}
-  fetch(`http://localhost:5000/addOrder`,{
+  fetch(`https://pure-hollows-18299.herokuapp.com/addOrder`,{
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -34,6 +35,7 @@ const newOrder = {...loggedInUser,checkOutProduct,currentDate}
     }
   })
 }
+console.log(checkOutProduct);
 
     return (
         <div className="check-out">
@@ -42,6 +44,7 @@ const newOrder = {...loggedInUser,checkOutProduct,currentDate}
                 <h4>CheckOut</h4>
                 <table className="table mt-4">
   <thead>
+
     <tr>
       <th scope="col">Description</th>
       <th scope="col">Quantity</th>
@@ -50,10 +53,17 @@ const newOrder = {...loggedInUser,checkOutProduct,currentDate}
   </thead>
   <tbody>
     <tr>
-     
-      <td>{checkOutProduct.name}</td>
+
+     <td>
+       <h4>{checkOutProduct.name}</h4>
+     </td>
       <td>1</td>
-      <td>$ {checkOutProduct.price}</td>
+      <td>
+        <h4>
+          ${checkOutProduct.price}
+        </h4>
+      </td>
+
     </tr>
   </tbody>
 </table>

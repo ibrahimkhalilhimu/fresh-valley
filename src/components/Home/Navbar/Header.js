@@ -3,7 +3,18 @@ import { Link } from 'react-router-dom';
 import { UserContext } from '../../../App';
 import './Header.css'
 const Header = () => {
-  const [loggedInUser,setLoggedInUser] = useContext(UserContext)
+  const [loggedInUser,setLoggedInUser, isAdmin,setIsAdmin] = useContext(UserContext)
+
+  useEffect(()=>{
+        
+    fetch('https://pure-hollows-18299.herokuapp.com/isAdmin',{
+        method:'POST',
+        headers:{'content-type':'application/json'},
+        body:JSON.stringify({email:loggedInUser.email})
+    })
+    .then(res => res.json())
+    .then(data=>{setIsAdmin(data)})
+},[])
     return (
         <div >
             <nav className="navbar navbar-expand-lg navbar-light container">
@@ -22,7 +33,11 @@ const Header = () => {
         <Link className="nav-link text-dark" to="/orders">Orders</Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link text-dark" to="/addProduct">Admin</Link>
+       {isAdmin? <Link className="nav-link text-dark" to="/addProduct">Admin</Link>: 
+       
+       <Link className="nav-link text-dark" to="/login">Admin</Link>
+       
+       }
       </li>
       <li className="nav-item">
         {loggedInUser.email?<a className="nav-link text-dark" to="#">{loggedInUser.displayName}</a>:<a className="nav-link text-dark" to="#">Deals</a>}
