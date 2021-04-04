@@ -33,11 +33,11 @@ const Header = () => {
         <Link className="nav-link text-dark" to="/orders">Orders</Link>
       </li>
       <li className="nav-item">
-       {isAdmin? <Link className="nav-link text-dark" to="/addProduct">Admin</Link>: 
+       {isAdmin ? <Link className="nav-link text-dark" to="/addProduct">Admin</Link>
+       :
+      <Link className="nav-link text-dark" to="/notAdmin">Admin</Link>
        
-       <Link className="nav-link text-dark" to="/login">Admin</Link>
-       
-       }
+    }
       </li>
       <li className="nav-item">
         {loggedInUser.email?<a className="nav-link text-dark" to="#">{loggedInUser.displayName}</a>:<a className="nav-link text-dark" to="#">Deals</a>}

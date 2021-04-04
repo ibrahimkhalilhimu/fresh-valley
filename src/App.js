@@ -14,6 +14,7 @@ import { createContext, useState } from 'react';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Orders from './components/Orders/Orders';
 import MakeAdmin from './components/Admin/MakeAdmin/MakeAdmin';
+import NotAdmin from './components/NotAdmin/NotAdmin';
 
 export const UserContext = createContext()
 
@@ -26,6 +27,9 @@ function App() {
       <UserContext.Provider value={[loggedInUser,setLoggedInUser,isAdmin,setIsAdmin]} >
       <Router>
         <Switch>   
+          <PrivateRoute path="/notAdmin">
+            <NotAdmin/>
+          </PrivateRoute>
         <PrivateRoute path="/orders">
             <Orders/>
           </PrivateRoute>
