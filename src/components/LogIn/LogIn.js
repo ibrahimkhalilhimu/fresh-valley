@@ -38,12 +38,7 @@ const googleSignIn =()=> {
     })
   };
 
-  const signOut =()=>{
-    handleSignOut()
-    .then(res =>{
-      handleResponse(res,false)
-    })
-  }
+
   
   const handleResponse =(res,redirect)=>{
     setLoggedInUser(res)

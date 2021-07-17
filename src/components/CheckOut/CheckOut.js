@@ -9,33 +9,48 @@ const CheckOut = () => {
   let { id } = useParams();
   const [checkOutProduct,setCheckOutProduct]=useState({});
 const [loggedInUser,setLoggedInUser] = useContext(UserContext)
-  const currentDate = new Date().toLocaleDateString();
 
-  useEffect(() => {
-    fetch(`https://pure-hollows-18299.herokuapp.com/product/${id}`)
-    .then(res => res.json())
-    .then(data => {
-      setCheckOutProduct(data)
-    })
-  },[])
+useEffect(() => {
+  fetch(`https://pure-hollows-18299.herokuapp.com/product/${id}`)
+  .then(res => res.json())
+  .then(data => {
+    setCheckOutProduct(data)
+  })
+  .catch(err => console.log(err))
+},[])
+
+
 
 const handleAddOrder = () => {
-const newOrder = {...loggedInUser,checkOutProduct,currentDate}
-  fetch(`https://pure-hollows-18299.herokuapp.com/addOrder`,{
+const newOrder = {
+  ...checkOutProduct,
+  email:loggedInUser.email,
+  displayName:loggedInUser.displayName,
+}
+console.log(newOrder);
+const url = `https://pure-hollows-18299.herokuapp.com/addOrder`
+  fetch(url,{
     method: 'POST',
+    // mode: "no-cors",
     headers: {
-      'Content-Type': 'application/json',
+      // "Access-Control-Allow-Origin": "*",
+      // 'Access-Control-Allow-Headers': "*",
+      'Content-Type': 'application/json'
     },
-    body: JSON.stringify(newOrder),
+    body: JSON.stringify(newOrder)
   })
   .then(res=>res.json())
   .then(data=>{
     if(data){
       alert('Your Order Successfully');
     }
+    console.log(data);
   })
+  .catch(err => console.log(err))
 }
 console.log(checkOutProduct);
+
+
 
     return (
         <div className="check-out">
@@ -55,7 +70,7 @@ console.log(checkOutProduct);
     <tr>
 
      <td>
-       <h4>{checkOutProduct.name}</h4>
+       <h4>{checkOutProduct.name }</h4>
      </td>
       <td>1</td>
       <td>

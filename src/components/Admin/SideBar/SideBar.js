@@ -16,6 +16,12 @@ const SideBar = () => {
                 <h6 className="pl-2"> Manage Product</h6>
             </div>
            </Link>
+           <Link to="/orderList"> 
+           <div className="text-white d-flex manageProduct">
+                <BsFillGridFill size="30px" className="text-white"/>
+                <h6 className="pl-2"> Order list</h6>
+            </div>
+           </Link>
          <Link to="/addProduct">
          <div className="text-white d-flex manageProduct">
                 <AiOutlinePlus size="30px" className="text-white"/>
